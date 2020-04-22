@@ -17,8 +17,8 @@ public class PolicyHandler{
 
         if(sent.isMe()){
             System.out.println("##### listener 전송알람 : " + sent.toJson());
-            BeanUtils.copyProperties(this, saved);
-            saved.publish();
+            //BeanUtils.copyProperties(this, sent);
+            //sent.publish();
         }
     }
     @StreamListener(KafkaProcessor.INPUT)
@@ -26,8 +26,8 @@ public class PolicyHandler{
 
         if(saved.isMe()){
             System.out.println("##### listener 수신알람 : " + saved.toJson());
-            BeanUtils.copyProperties(this, saved);
-            saved.publish();
+            //BeanUtils.copyProperties(this, saved);
+            //saved.publish();
         }
     }
 

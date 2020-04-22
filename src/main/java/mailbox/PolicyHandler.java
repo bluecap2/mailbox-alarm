@@ -3,6 +3,7 @@ package mailbox;
 import mailbox.config.kafka.KafkaProcessor;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -16,6 +17,8 @@ public class PolicyHandler{
 
         if(sent.isMe()){
             System.out.println("##### listener 전송알람 : " + sent.toJson());
+            BeanUtils.copyProperties(this, saved);
+            saved.publish();
         }
     }
     @StreamListener(KafkaProcessor.INPUT)
@@ -23,6 +26,8 @@ public class PolicyHandler{
 
         if(saved.isMe()){
             System.out.println("##### listener 수신알람 : " + saved.toJson());
+            BeanUtils.copyProperties(this, saved);
+            saved.publish();
         }
     }
 

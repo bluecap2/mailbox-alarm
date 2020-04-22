@@ -1,0 +1,9 @@
+mailbox\AbstractEvent.class
+mailbox\config\kafka\KafkaProcessor.class
+mailbox\Application.class
+mailbox\AlarmList.class
+mailbox\PolicyHandler.class
+mailbox\AlarmListController.class
+mailbox\Saved.class
+mailbox\AlarmListRepository.class
+mailbox\Sent.class
